@@ -67,11 +67,12 @@
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     if ($result) {
+                        $counter = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
-                        $id = $row['ID_заказа'];
-                            echo "
-                            <tr>
-                                <td>".$row['ID_заказа']."</td>
+                            $counter++;    
+                            $id = $row['ID_заказа'];
+                            echo "<tr>
+                                <td>$counter</td>
                                 <td>".$row['Заказчик']."</td>
                                 <td>".$row['Номер договора']."</td>
                                 <td>".$row['Товар']."</td>
@@ -79,8 +80,7 @@
                                 <td>".$row['Дата заказа']."</td>
                                 <td><a href='createAndEdit.php?id=".$id."'>Редактировать</a></td>
                                 <td><a href='php/delete.php?id=".$id."'>Удалить</a></td>
-                            </tr>
-                            ";
+                            </tr>";
                         }
                     } else {
                         $errorMessage = mysqli_error($conn);
