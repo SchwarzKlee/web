@@ -54,11 +54,13 @@
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     if ($result) {
+                        $counter = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $id = $row['ID_товара'];
+                        $counter++;    
+                        $id = $row['ID_товара'];
                             echo "
                             <tr>
-                                <td>".$row['ID_товара']."</td>
+                                <td>$counter</td>
                                 <td>".$row['Наименование']."</td>
                                 <td>".$row['Описание']."</td>
                                 <td>".$row['Цена']."</td>
