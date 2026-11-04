@@ -31,7 +31,7 @@
     <main>
         <div class="addButton">
             <h1>Отгрузка</h1>
-            <a href="php/addProduct.php"><button>Добавить отгрузку</button></a>
+            <a href="createAndEdit.php"><button>Добавить отгрузку</button></a>
         </div>
         <table class="table">
             <thead>
@@ -64,11 +64,13 @@
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     if ($result) {
+                        $counter = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
-                        $id = $row['ID_отгрузки'];
+                            $counter++;
+                            $id = $row['ID_отгрузки'];
                             echo "
                             <tr>
-                                <td>".$row['ID_отгрузки']."</td>
+                                <td>$counter</td>
                                 <td>".$row['Товар']."</td>
                                 <td>".$row['Дата отгрузки']."</td>
                                 <td>".$row['Количество']."</td>
