@@ -31,7 +31,7 @@
     <main>
         <div class="addButton">
             <h1>Заказчики</h1>
-            <a href="create.php"><button>Добавить заказчика</button></a>
+            <a href="createAndEdit.php"><button>Добавить заказчика</button></a>
         </div>
         <table class="table">
             <thead>
@@ -56,16 +56,18 @@
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     if ($result) {
+                        $counter = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
+                            $counter++;
                             $id = $row['ID_заказчика'];
                             echo "
                             <tr>
-                                <td>".$row['ID_заказчика']."</td>
+                                <td>$counter</td>
                                 <td>".$row['Наименование']."</td>
                                 <td>".$row['ИНН']."</td>
                                 <td>".$row['Юридический адрес']."</td>
                                 <td>".$row['Контактное лицо']."</td>
-                                <td>+".$row['Телефон']."</td>
+                                <td>".$row['Телефон']."</td>
                                 <td>".$row['Email']."</td>
                                 <td><a href='createAndEdit.php?id=".$id."'>Редактировать</a></td>
                                 <td><a href='php/delete.php?id=".$id."'>Удалить</a></td>
